@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
 
 // test("button starts with correct color", () => {
@@ -18,8 +18,14 @@ test("checkbox flow", () => {
   const checkboxElement = screen.getByRole("checkbox", {
     name: /disable button/i,
   });
-
   // check initial conditions
-  expect(buttonElement).toBeEnabled();
   expect(checkboxElement).not.toBeChecked();
+
+  expect(buttonElement).not.toBeDisabled();
+
+  fireEvent.click(checkboxElement);
+  expect(buttonElement).toBeDisabled();
+
+  fireEvent.click(checkboxElement);
+  expect(buttonElement).toBeEnabled();
 });
