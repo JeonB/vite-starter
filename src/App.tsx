@@ -8,9 +8,7 @@ function App() {
     color === "medium-violet-red" ? "midnight-blue" : "medium-violet-red";
   const nextColorTitleCase = kebabCaseToTitleCase(nextColorClass);
   const className = disabled ? "gray" : color;
-  useEffect(() => {
-    // console.log(disabled);
-  }, [disabled]);
+  useEffect(() => {}, [disabled]);
   return (
     <div>
       <button
